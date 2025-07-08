@@ -1,7 +1,3 @@
-# The MIT License (MIT)
-# Copyright © 2021 The Sapphire Community and its contributors
-# https://github.com/sapphiredev/.github/blob/main/LICENSE.md
-
 name: Reusable Label Sync
 
 on:
@@ -17,47 +13,26 @@ on:
         required: false
         default: 'false'
         type: string
-      merge-labels:
-        description: Whether to merge labels or not
+      repository:
+        description: The repository to get the labels.yml file from
         required: false
-        default: false
-        type: boolean
-      repository-overwrite-labels:
-        description: The repository to get overwrite labels from. Only used if merge-labels is true!
-        required: false
+        default: Jaronline/.github
         type: string
 
 jobs:
   label-sync:
     name: Label sync
     runs-on: ${{ inputs.operating-system }}
+    permissions:
+      contents: read
+      issues: write
     steps:
-      - name: Checkout Core labels
+      - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
-          path: core-labels
           sparse-checkout: .github/labels.yml
           sparse-checkout-cone-mode: false
-          repository: Jaronline/.github
+          repository: ${{ inputs.repository }}
           submodules: ${{ inputs.with-submodules }}
-      - name: Checkout Overwrite Labels
-        if: inputs.merge-labels == true
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          path: overwrite-labels
-          sparse-checkout: .github/labels.yml
-          sparse-checkout-cone-mode: false
-          repository: ${{ inputs.repository-overwrite-labels }}
-          submodules: ${{ inputs.with-submodules }}
-      - name: Merge labels
-        if: inputs.merge-labels == true
-        run: |
-          yq '. *+ load("core-labels/.github/labels.yml")' overwrite-labels/.github/labels.yml > labels.yml
-      - name: Move core labels
-        if: inputs.merge-labels == false
-        run: mv core-labels/.github/labels.yml labels.yml
       - name: Run Label Sync
-        uses: crazy-max/ghaction-github-labeler@24d110aa46a59976b8a7f35518cb7f14f434c916 # v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          yaml-file: labels.yml
+        uses: Compairifuel/.github/actions/labelsync@main
