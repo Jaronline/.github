@@ -9,10 +9,6 @@ inputs:
     description: 'The Java distribution to use (e.g., "temurin", "zulu").'
     required: false
     default: 'temurin'
-  validate-wrapper:
-    description: 'Whether to validate the Gradle wrapper before setup.'
-    required: false
-    default: 'true'
   gradle-version:
     description: 'The version of Gradle to set up (e.g., "7.5", "wrapper").'
     required: false
@@ -38,7 +34,7 @@ runs:
         distribution: ${{ inputs.java-distribution }}
 
     - name: Validate Gradle wrapper
-      if: ${{ inputs.validate-wrapper == 'true' }}
+      if: ${{ inputs.gradle-version == 'wrapper' }}
       uses: gradle/actions/wrapper-validation@v5
 
     - name: Setup Gradle
