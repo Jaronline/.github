@@ -1,0 +1,48 @@
+name: Setup Gradle
+description: Setup Gradle environment and JDK for GitHub Actions
+inputs:
+  java-version:
+    description: 'The version of Java to set up (e.g., "21", "17", "11").'
+    required: true
+    default: '21'
+  java-distribution:
+    description: 'The Java distribution to use (e.g., "temurin", "zulu").'
+    required: false
+    default: 'temurin'
+  validate-wrapper:
+    description: 'Whether to validate the Gradle wrapper before setup.'
+    required: false
+    default: 'true'
+  gradle-version:
+    description: 'The version of Gradle to set up (e.g., "7.5", "wrapper").'
+    required: false
+    default: 'wrapper'
+  cache-read-only:
+    description: 'Whether to set Gradle cache to read-only mode.'
+    required: false
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - name: Set up swap space
+      if: runner.os == 'Linux'
+      uses: pierotofy/set-swap-space@v1.0
+      with:
+        swap-size-gb: 10
+
+    - name: Setup JDK
+      uses: actions/setup-java@v5
+      with:
+        java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.java-distribution }}
+
+    - name: Validate Gradle wrapper
+      if: ${{ inputs.validate-wrapper == 'true' }}
+      uses: gradle/actions/wrapper-validation@v5
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v5
+      with:
+        gradle-version: ${{ inputs.gradle-version }}
+        cache-read-only: ${{ inputs.cache-read-only }}
