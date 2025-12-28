@@ -1,0 +1,7 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "baseBranchPatterns": ["/^(?:\\d+\\.\\d+(\\.\\d+)?(-(pre|rc|snapshot-)\\d+)?$/", "/^\\d+\\.\\d+\\.x$/", "/^\\d{2}w\\d{2}[a-z]$/"]
+}
