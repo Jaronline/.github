@@ -3,5 +3,5 @@
   "extends": [
     "config:recommended"
   ],
-  "baseBranchPatterns": ["/^(?:\\d+\\.\\d+(\\.\\d+)?(-(pre|rc|snapshot-)\\d+)?$/", "/^\\d+\\.\\d+\\.x$/", "/^\\d{2}w\\d{2}[a-z]$/"]
+  "baseBranchPatterns": ["$default", "/^(?:\\d+\\.\\d+(\\.\\d+)?(-(pre|rc|snapshot-)\\d+)?$/", "/^\\d+\\.\\d+\\.x$/", "/^\\d{2}w\\d{2}[a-z]$/"]
 }
