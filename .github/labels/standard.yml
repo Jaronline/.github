@@ -1,0 +1,10 @@
+labels:
+  - name: "help wanted"
+    description: "Issues that need assistance from volunteers or PRs that need help to proceed."
+    color: "128A0C"
+  - name: "invalid"
+    description: "Issues that will not be fixed or PRs that will not merge, e.g. due to backwards compatibility."
+    color: "671df0"
+  - name: "stalled"
+    description: "Issues and PRs that are being set aside for now for rethinking"
+    color: "fbca04"

@@ -1,0 +1,10 @@
+labels:
+  - name: "major"
+    description: "PRs that contain breaking changes and should be released in the next major version."
+    color: "c10f47"
+  - name: "minor"
+    description: "PRs that contain new features and should be released in the next minor version."
+    color: "e4f486"
+  - name: "patch"
+    description: "PRs that contain bugfixes and should be released in the next patch version."
+    color: "e8be8b"

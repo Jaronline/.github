@@ -1,0 +1,13 @@
+labels:
+  - name: "needs docs"
+    description: "PRs that need documentation."
+    color: "d4c5f9"
+  - name: "needs testing"
+    description: "PRs that need testing from the author or volunteers."
+    color: "d93f0b"
+  - name: "needs typings"
+    description: "PRs that need typings."
+    color: "d4c5f9"
+  - name: "needs translations"
+    description: "PRs that need translations."
+    color: "b60205"

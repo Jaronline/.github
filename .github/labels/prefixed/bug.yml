@@ -1,0 +1,13 @@
+labels:
+  - name: "bug:already fixed"
+    description: "Issues that report already fixed bugs."
+    color: "B3E88C"
+  - name: "bug:cannot reproduce"
+    description: "Issues that report bugs that cannot be reproduced."
+    color: "f9d0c4"
+  - name: "bug:confirmed"
+    description: "Issues that report confirmed bugs."
+    color: "f9d0c4"
+  - name: "bug:unverified"
+    description: "Issues that report unverified bugs. Pending for inspection."
+    color: "f9d0c4"
