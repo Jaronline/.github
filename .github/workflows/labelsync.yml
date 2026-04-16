@@ -7,4 +7,4 @@ on:
 
 jobs:
   label_sync:
-    uses: Jaronline/.github/.github/workflows/reusable-labelsync.yml@main
+    uses: Jaronline/.github/.github/workflows/reusable-labelsync.yml@bfff79c5f4b33325737ecc2171e4137ed582ddf1 # main
