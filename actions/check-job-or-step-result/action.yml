@@ -1,0 +1,27 @@
+name: Check Job or Step Result
+description: Logs a message and exits based on the result of a workflow job or step
+
+inputs:
+  result:
+    description: The result of the job or step to check
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Check Result
+      shell: bash
+      run: |
+        result="${{ inputs.result }}"
+        if [ "$result" = "failure" ] || [ "$result" = "cancelled" ]; then
+          echo "❌ One or more jobs failed or were cancelled"
+          exit 64
+        elif [ "$result" = "skipped" ]; then
+          echo "⚠️ All jobs were skipped"
+          exit 65
+        elif [ "$result" != "success" ]; then
+          echo "❌ Invalid job result"
+          exit 66
+        else
+          echo "✅ All jobs passed"
+        fi
