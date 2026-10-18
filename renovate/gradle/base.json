@@ -1,0 +1,8 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["github>jaronline/.github//renovate/base"],
+    "gradle": {
+        "extends": ["github>jaronline/.github//renovate/base-package-rules"],
+        "rangeStrategy": "bump"
+    }
+}
