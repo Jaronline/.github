@@ -1,0 +1,7 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "maven-wrapper": {
+        "extends": ["github>jaronline/.github//renovate/base-package-rules"],
+        "rangeStrategy": "bump"
+    }
+}
