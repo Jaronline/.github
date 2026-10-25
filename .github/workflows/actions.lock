@@ -3,10 +3,13 @@
 # Docs: https://gh.io/actions-lockfile
 version: 'v0.0.3'
 workflows:
+    '.github/workflows/ci.yml': []
     '.github/workflows/labelsync.yml': []
     '.github/workflows/reusable-labelsync.yml':
         - 'actions/checkout@v4.2.2'
         - 'compairifuel/.github@V1.1.0-5'
+    '.github/workflows/reusable-verify-lockfile.yml':
+        - 'actions/checkout@v4.2.2'
 dependencies:
     'actions/checkout@v4.2.2':
         ref: 'v4.2.2'
