@@ -1,6 +1,6 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>jaronline/.github//renovate/base", "helpers:pinGitHubActionDigests"],
+    "extends": ["github>jaronline/.github//renovate/base"],
     "github-actions": {
         "extends": [":pinDependencies", "github>jaronline/.github//renovate/base-package-rules"]
     }
