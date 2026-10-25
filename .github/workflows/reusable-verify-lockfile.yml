@@ -1,0 +1,31 @@
+name: Reusable Verify Lockfile
+
+on:
+  workflow_call:
+    inputs:
+      operating-system:
+        description: The operating system to use (default `ubuntu-latest`)
+        required: false
+        default: ubuntu-latest
+        type: string
+    secrets:
+      GH_TOKEN:
+        description: The GitHub token to use during checkout
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ${{ inputs.operating-system }}
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+        with:
+          sparse-checkout: .github/workflows
+          persist-credentials: false
+      - run: gh extension install github/gh-actions-lock --pin v0.2.0
+      - run: gh actions-lock --verify
