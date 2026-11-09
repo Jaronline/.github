@@ -5,8 +5,6 @@ version: 'v0.0.3'
 workflows:
     '.github/workflows/ci.yml': []
     '.github/workflows/labelsync.yml': []
-    '.github/workflows/reusable-check-job-and-step-results.yml':
-        - 'jaronline/.github@main'
     '.github/workflows/reusable-labelsync.yml':
         - 'actions/checkout@v4.2.2'
         - 'compairifuel/.github@V1.1.0-5'
@@ -23,8 +21,3 @@ dependencies:
         commit: 'sha1-c05ff467c376ced04699223c100c8cda4fbc81fe'
         owner_id: 130053673
         repo_id: 896455429
-    'jaronline/.github@main':
-        ref: 'main'
-        commit: 'sha1-1135580a4654224ccb31a9bc41b4fd0e20dae458'
-        owner_id: 102665500
-        repo_id: 479295239
