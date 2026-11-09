@@ -1,0 +1,34 @@
+name: Check Workflow Results
+description: Logs a message and exits based on the result of one or more workflow jobs and/or steps
+
+inputs:
+  results:
+    description: Array of results of jobs and/or steps to check
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        valid=("success" "failure" "skipped")
+        for result in ${{ join(fromJson(inputs.results), ' ') }}; do
+          if [[ ! " ${valid[*]} " =~ [[:space:]]${result}[[:space:]] ]]; then
+            echo "❌ Invalid job result: '$result'"
+            exit 66
+          fi
+        done
+    - if: contains(fromJson(inputs.results), 'failure') || contains(fromJson(inputs.results), 'cancelled')
+      shell: bash
+      run: |
+        echo "❌ Some jobs and/or steps failed or were cancelled"
+        exit 64
+    - if: contains(fromJson(inputs.results), 'skipped')
+      shell: bash
+      run: |
+        echo "⚠️ Some jobs and/or steps were skipped"
+        exit 65
+    - shell: bash
+      run: |
+        echo "✅ All jobs passed"
+        exit 0

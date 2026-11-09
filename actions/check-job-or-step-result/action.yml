@@ -1,5 +1,5 @@
-name: Check Job or Step Result
-description: Logs a message and exits based on the result of a workflow job or step
+name: Check Job or Step Result (Deprecated)
+description: Logs a message and exits based on the result of a workflow job or step. This action is deprecated, use Jaronline/.github/actions/check-workflow-result instead.
 
 inputs:
   result:
