@@ -25,6 +25,6 @@ dependencies:
         repo_id: 896455429
     'jaronline/.github@main':
         ref: 'main'
-        commit: 'sha1-1135580a4654224ccb31a9bc41b4fd0e20dae458'
+        commit: 'sha1-f01cf891a6896f3995538de6233f662085340043'
         owner_id: 102665500
         repo_id: 479295239
